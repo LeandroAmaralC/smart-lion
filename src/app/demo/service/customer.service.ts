@@ -6,6 +6,7 @@ import { Customer } from '../api/customer';
 export class CustomerService {
 
     constructor(private http: HttpClient) { }
+    url: String = "localhost:8080/api/estoque";
 
     getCustomersSmall() {
         return this.http.get<any>('assets/demo/data/customers-small.json')
