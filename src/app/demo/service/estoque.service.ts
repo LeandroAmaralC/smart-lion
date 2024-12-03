@@ -25,8 +25,8 @@ export class EstoqueService {
         `${environment.apiBaseUrl}${this.requestMapping}buscar-todos-itens-estoque`, { params: params }
       )
       .pipe(
-        (response) => response,
-        (error) => error
+        (response: any) => response,
+        (error: any) => error
       );
   }
 }
