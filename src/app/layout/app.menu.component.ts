@@ -20,6 +20,7 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
                     { label: 'Estoque', icon: 'pi pi-fw pi-shopping-cart', routerLink: ['/view/estoque'] },
                     { label: 'Orçamento Doméstico', icon: 'pi pi-fw pi-calculator', routerLink: ['/view/orcamento-domestico'] },
+                    { label: 'Usuários', icon: 'pi pi-fw pi-calculator', routerLink: ['/view/usuario'] },
                 ]
             }
         ];

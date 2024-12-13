@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
     imports: [RouterModule.forChild([
         { path: 'estoque', data: { breadcrumb: 'Estoque' }, loadChildren: () => import('./estoque/estoque.module').then(m => m.EstoqueModule) },
         { path: 'orcamento-domestico', data: { breadcrumb: 'OrcamentoDomestico' }, loadChildren: () => import('./orcamento-domestico/orcamento-domestico.module').then(m => m.OrcamentoDomesticoModule) },
+        { path: 'usuario', data: { breadcrumb: 'OrcamentoDomestico' }, loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioModule) },
         { path: '**', redirectTo: '/notfound' }
     ])],
     exports: [RouterModule]
