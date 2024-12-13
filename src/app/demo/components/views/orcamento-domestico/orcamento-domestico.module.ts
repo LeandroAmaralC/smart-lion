@@ -19,6 +19,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { SliderModule } from 'primeng/slider';
 import { ToastModule } from 'primeng/toast';  // Importando o módulo Toast
 import { ToolbarModule } from 'primeng/toolbar';
+import { TagModule } from 'primeng/tag';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
 	imports: [
@@ -40,7 +42,9 @@ import { ToolbarModule } from 'primeng/toolbar';
 		ProgressBarModule,
 		SliderModule,
 		ToastModule,
-		ToolbarModule
+		ToolbarModule,
+		TagModule,
+		DialogModule
 	],
 	declarations: [OrcamentoDomesticoComponent]
 })

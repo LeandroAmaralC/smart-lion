@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sakai-ng": {
+    "smartlion": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sakai-ng",
+            "outputPath": "dist/smartlion",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "sakai-ng:build:production"
+              "buildTarget": "smartlion:build:production"
             },
             "development": {
-              "browserTarget": "sakai-ng:build:development"
+              "buildTarget": "smartlion:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sakai-ng:build"
+            "buildTarget": "smartlion:build"
           }
         },
         "test": {
@@ -115,7 +115,6 @@
       }
     }
   },
-  "defaultProject": "sakai-ng",
   "cli": {
     "analytics": false,
     "schematicCollections": [

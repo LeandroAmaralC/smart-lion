@@ -1,61 +1,75 @@
+<div class="card">
+    <p-toast></p-toast>
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success mr-2"
+                (click)="openNew()"></button>
+            <button pButton pRipple label="Apagar" icon="pi pi-trash" class="p-button-danger"
+                (click)="deleteSelectedProducts()">
+            </button>
+        </ng-template>
+    </p-toolbar>
 
-<p-toast></p-toast>
-<p-toolbar styleClass="mb-4 gap-2">
-    <ng-template pTemplate="left">
-        <button pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
-        <button pButton pRipple label="Apagar" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" 
+    <p-table #dt [value]="countries" [rows]="10" [paginator]="true"
+        [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+        [tableStyle]="{ 'min-width': '75rem' }" [(selection)]="countries" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Recursos do Usuário</h5>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 4rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="name">Data <p-sortIcon field="data"></p-sortIcon></th>
+                <th pSortableColumn="price">Renda <p-sortIcon field="renda"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td></td>
+                <td>
+                    <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                </td>
+                <td></td>
 
-		>
-	</button>
-    </ng-template>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <!-- <div class="flex align-items-center justify-content-between">In total there are {{ products ? products.length : 0 }} products.</div>  -->
+        </ng-template>
+    </p-table>
+</div>
 
-    <ng-template pTemplate="right">
-        <!-- <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
-        <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button> -->
-    </ng-template>
-</p-toolbar>
+<p-dialog [(visible)]="productDialog" [style]="{ width: '420px', height: '435px' }" header="Recurso Mensal" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="formgrid grid">
+            <div class="field col">
+                <label for="price">Mês/Ano</label>
+                <p-calendar [(ngModel)]="value6" view="month" dateFormat="mm/yy" [readonlyInput]="true"></p-calendar>
 
-<p-table
-    #dt
-    [value]="countries"
-    [rows]="10"
-    [paginator]="true"
-    [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
-    [tableStyle]="{ 'min-width': '75rem' }"
-    [(selection)]="countries"
-    [rowHover]="true"
-    dataKey="id"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [showCurrentPageReport]="true"
->
-    <ng-template pTemplate="caption">
-        <div class="flex align-items-center justify-content-between">
-            <h5 class="m-0">Recursos do Usuário</h5>
-            <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <!-- <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." /> -->
-            </span>
+            </div>
+            <div class="field col">
+                <label for="quantity">Renda</label>
+                <p-inputNumber id="price" [(ngModel)]="value7" mode="currency" currency="BRL"></p-inputNumber>
+            </div>  
         </div>
+        <div class="field">
+            <div style="display: flex; justify-content: center; align-items: center;" class="field col">
+                    <i class="pi pi-wallet" style="font-size: 150px; color: gray; padding-right: 50px;"></i>
+                    <i class="pi pi-money-bill" style="font-size: 150px; color: green; "></i>   
+            </div>
+        </div>    
     </ng-template>
-    <ng-template pTemplate="header">
-        <tr>
-            <th style="width: 4rem">
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
-            <th pSortableColumn="name" style="min-width:15rem">Data <p-sortIcon field="name"></p-sortIcon></th>
-            <th pSortableColumn="price">Renda <p-sortIcon field="price"></p-sortIcon></th>
-            <th></th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-product>
-        <tr>
-            <td>
-                <p-tableCheckbox [value]="product"></p-tableCheckbox>
-            </td>
 
-        </tr>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Salvar" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
     </ng-template>
-    <ng-template pTemplate="summary">
-		<!-- <div class="flex align-items-center justify-content-between">In total there are {{ products ? products.length : 0 }} products.</div>  -->
-    </ng-template>
-</p-table>
+</p-dialog>
+
+<!-- <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog> -->
