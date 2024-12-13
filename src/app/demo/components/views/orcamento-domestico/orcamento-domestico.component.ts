@@ -7,7 +7,6 @@ import { ProductService } from 'src/app/demo/service/product.service';
 import { Product } from 'src/app/demo/api/product';
 import { Estoque } from 'src/app/demo/model/Estoque';
 import { EstoqueService } from 'src/app/demo/service/estoque.service';
-import { error } from 'console';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
@@ -37,6 +36,10 @@ export class OrcamentoDomesticoComponent implements OnInit {
     value9: any;
 
     value10: any;
+
+    productDialog: boolean = false;
+
+    submitted: boolean = false;
 
     loading: boolean = false;
 
@@ -114,8 +117,10 @@ export class OrcamentoDomesticoComponent implements OnInit {
         this.filter.nativeElement.value = '';
     }
 
-    openNew(){
-
+    openNew() {
+        // this.product = {};
+        this.submitted = false;
+        this.productDialog = true;
     }
 
     deleteSelectedProducts() {
@@ -130,8 +135,17 @@ export class OrcamentoDomesticoComponent implements OnInit {
 
     }
 
-    getSeverity(any: any) {
+    getSeverity(status: string) {
+        return "";
         
     }
+
+    saveProduct() {
+
+    }
     
+    hideDialog() {
+        this.productDialog = false;
+        this.submitted = false;
+    }
 }

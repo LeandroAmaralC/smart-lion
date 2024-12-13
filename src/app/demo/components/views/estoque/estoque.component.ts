@@ -7,7 +7,6 @@ import { ProductService } from 'src/app/demo/service/product.service';
 import { Product } from 'src/app/demo/api/product';
 import { Estoque } from 'src/app/demo/model/Estoque';
 import { EstoqueService } from 'src/app/demo/service/estoque.service';
-import { error } from 'console';
 
 @Component({
     templateUrl: './estoque.component.html'
