@@ -19,6 +19,8 @@ import { ToastModule } from 'primeng/toast';  // Importando o módulo Toast
 import { ToolbarModule } from 'primeng/toolbar';
 import { UsuarioComponent } from './usuario.component';
 import { UsuarioRoutingModule } from './usuario-rounting.nodule';
+import { TagModule } from 'primeng/tag';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
 	imports: [
@@ -40,7 +42,9 @@ import { UsuarioRoutingModule } from './usuario-rounting.nodule';
 		ProgressBarModule,
 		SliderModule,
 		ToastModule,
-		ToolbarModule
+		ToolbarModule,
+		TagModule,
+		DialogModule
 	],
 	declarations: [UsuarioComponent]
 })
